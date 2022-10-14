@@ -1,0 +1,149 @@
+body {
+  font-family: 'Poppins', serif;
+  background-color: #f1f1f1;
+  background-image: url(../images/concrete_seamless.png);
+}
+
+#logo {
+  align-self: center;
+  animation: logomove 5s;
+  /* play animation once when page is fist loaded */
+  animation-iteration-count: 1;
+}
+
+/* animate the logo */
+@keyframes logomove {
+  from {
+    width: 25px;
+    opacity: 0;
+  }
+  to {
+    width: 475px;
+    opacity: 1;
+  }
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+
+/* align nav links to the center in one column */
+.nav_links {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  width: 100%;
+}
+
+/* Styles the links so that they have the same color even after they have been visited */
+a:visited {
+  color: blue;
+}
+
+.card > header {
+  background-color: #288088;
+  border: solid 2px #45ADAD;
+  padding: 20px 0px 20px 0px;
+  border-radius: 50px 50px 0px 0px;
+}
+
+/* flex element that contains items of the card class */
+.pricing {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  /* style all card elements in the pricing class to have the same width with flexbox properties */
+  align-content: space-between;
+}
+
+.card {
+  border-radius: 50px 50px 0px 0px;
+  /* specifies an initial .card “size” of 450px */
+  flex-basis: 450px;
+}
+
+.gallery img {
+  border: solid 10px #50C7C7;
+  margin: 10px;
+  width: 300px;
+}
+
+.gallery {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+/* media query for screen sizes greater than 900px */
+@media only screen and (min-width: 900px) {
+  #logo {
+    /* align logo to the left of the page */
+    align-self: flex-start;
+  }
+
+  body > header {
+    /* Modifies the first header so that it remains visible at the top of the screen even as scrolling */
+    position: sticky;
+    top: 0;
+  }
+
+  .nav_links {
+    /* align links to the right of the page in one row */
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  .card {
+    /* specifies an initial .card “size” of 275px */
+    flex-basis: 275px;
+  } 
+    
+}
+
+/* Tone down the animation to avoid motion triggers when prefers-reduced-motion
+ is selected in the accessibility preferences */
+@media (prefers-reduced-motion: reduce) {
+  #logo {
+    animation: none;
+  }
+}
+
+/* media query for when the page is printed in portrait mode */
+/* and (orientation: portrait) */
+@media only print {
+  body {
+    font-family: Arial, Helvetica;
+    background-image: none;
+  }
+
+  .nav_links {
+    /* align links to the right of the page in one row */
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  /* align cards at the bottom */
+  .pricing {
+    flex-wrap: nowrap;
+    align-items: flex-end;
+  }
+
+  .card {
+    border: solid 2px #45ADDD; 
+    flex-basis: 325px;
+  }
+
+  .gallery {
+    /* styles gallery to no longer be visible */
+    display: none;
+  }
+
+  .card li:nth-child(2)::after {
+    content: "👍";
+  }
+}
